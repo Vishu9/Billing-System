@@ -1,0 +1,22 @@
+<!-- billing/templates/billing/generate_bill.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Bill</title>
+</head>
+<body>
+    <h1>Generate Bill</h1>
+    <form action="{% url 'generate_bill' %}" method="post">
+        {% csrf_token %}
+        <label for="selected_products">Select Products:</label><br>
+        <select name="selected_products" id="selected_products" multiple>
+            {% for product in products %}
+                <option value="{{ product.id }}">{{ product.name }} - ${{ product.price }}</option>
+            {% endfor %}
+        </select><br><br>
+        <button type="submit">Generate Bill</button>
+    </form>
+</body>
+</html>

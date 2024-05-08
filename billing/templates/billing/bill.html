@@ -1,0 +1,19 @@
+<!-- billing/templates/billing/bill.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill</title>
+</head>
+<body>
+    <h1>Bill Details</h1>
+    <p>Total Cost: ${{ bill.total_cost }}</p>
+    <p>Products:</p>
+    <ul>
+        {% for product in bill.products.all %}
+            <li>{{ product.name }} - ${{ product.price }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
